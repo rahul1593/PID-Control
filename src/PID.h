@@ -46,4 +46,6 @@ public:
   
 };
 
+double weighted_average(std::vector<double> list);
+
 #endif /* PID_H */

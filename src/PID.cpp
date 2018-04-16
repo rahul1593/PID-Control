@@ -3,6 +3,17 @@
 
 using namespace std;
 
+double weighted_average(std::vector<double> list){
+  const int n = list.size();
+  int wl = n*(n+1)/2;
+  double sm = 0;
+  
+  for(int i=0; i<n; i++)
+    sm += list[i];
+  
+  return sm/wl;
+}
+
 /*
 * TODO: Complete the PID class.
 */
@@ -23,15 +34,8 @@ void PID::Init(double Kp, double Ki, double Kd) {
 }
 
 void PID::UpdateError(double cte) {
-  this->d_error = cte - p_error;
+  this->d_error = cte - this->p_error;
   this->p_error = cte;
-  //update error history
-  /*if(this->cte_history.size() > 20){
-    this->i_error -= this->cte_history[0];
-    this->cte_history.erase(this->cte_history.begin());
-  }
-  this->cte_history.push_back(cte);
-  */
   this->i_error += cte;
 }
 
