@@ -1,10 +1,8 @@
 # PID Controller Project
----
 
 In this project, I have implemented a basic PID controller for controlling the steering of the car in simulator.
 
 ## Reflections
----
 
 The simulator gives `speed`, `cross-track error` and `steering angle` of the car. The cross-track error is used to control the steering through PID control. Steering angle is used to control the throttle, because speed should be less in between turns. Following code snippet is used to control the throttle:
 
