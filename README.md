@@ -32,12 +32,12 @@ Following is the explanation for PID parameters:
 The proportional component sets the response of the controller which is proportional to the error. If error is more, response would be aggressive, else mild. If only proportional constant is used, it would result in oscillations centered around the zero error points in the output. Following link show shows the output of P-controller(lower `Kp` value than used): <a href="https://youtu.be/A37PKPmfj9c">P-controller</a>.
 
 ### Integral
-The integral component sets the respose for accumulated error over time. This parameter is used to adjust the controller for systematic bias which is consistent throughout the process. Here we do not have any such bias, but it tries to slow the down the response of controller when it is about to reach the zero error position. This helps to keep the car around center of road(zero CTE).
+The integral component sets the respose for accumulated error over time. This parameter is used to adjust the controller for systematic bias which is consistent throughout the process. Here we do not have any such bias, but it tries to slow the down the response of controller when it is about to reach the zero error position. This helps to keep the car around center of road (zero CTE).
 
 ### Derivative
-This component takes the rate of change of the error and tries to smooth the response of the system and avoid the overshoot from the desired zero error position. If this value is too large then the response will be too slow and controller might never reach the zero error position. Smalle value of this parameter might result in oscillations in the output. Following link show shows the output of PD-controller: <a href="https://youtu.be/9jqWVUWnVRM">PD-controller</a>.
+This component takes the rate of change of the error and tries to smooth the response of the system which helps to avoid the overshoot from the desired zero error position. If this value is too large then the response will be too slow and controller might never reach the zero error position. Smaller value of this parameter might result in oscillations in the output. Following link show shows the output of PD-controller: <a href="https://youtu.be/9jqWVUWnVRM">PD-controller</a>.
 
-In PD-controller, it can be seen that car is going near the corners because of slow down of th repsonse `Kp`.
+In PD-controller, it can be seen that car is going near the corners because of slow down of the repsonse from `Kp` due to `Kd`.
 
 Following are the parameter values which were chosen for the controller:
 
@@ -60,7 +60,7 @@ The Derivative paramter `Kd` is kept different for different `cross-track error`
     pid.Kd = 1.9;
   }
 ```
-This helps in smoothing the response of the controller when car gets high error values and avoids sudden turns. If the car has less error and is near center of the road, a lower value of `Kd` is used so that the car remains at the center. Also in between turns, lower value of `Kd` will ensure smooth turing of the car, because if error is small, controllers response will be mild but accurate.
+This helps in smoothing the response of the controller when car gets high error values and avoids sudden turns. If the car has less error and is near center of the road, a lower value of `Kd` is used so that the car remains at the center. Also in between turns, lower value of `Kd` will ensure smooth turning of the car, because if error is small, controller's response will be mild but accurate.
 
 So, after using the above PID parameter values and variable throttle, car manages higher speeds on straight road and slows down near turns.
 
